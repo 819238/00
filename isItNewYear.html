@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Year Greeting</title>
+</head>
+<body>
+
+<script>
+  // Get the current date
+  const currentDate = new Date();
+
+  // Check if it's January 1st
+  if (currentDate.getMonth() === 0 && currentDate.getDate() === 1) {
+    // Display a New Year greeting
+    document.write('<h1>Happy New Year!</h1>');
+  } else {
+    // Display a default message
+    document.write('<h1>Its Not New Year!</h1>');
+  }
+</script>
+
+</body>
+</html>

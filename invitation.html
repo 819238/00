@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Undangan Pernikahan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.5s;  
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .cover {
+            text-align: center;
+            padding: 50px;
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        .closing {
+            background-color: #3498db;
+            padding: 50px;
+            font-size: 20px;
+            color: #fff;
+        }
+
+        .invitation {
+            text-align: justify;
+            padding: 20px;
+        }
+
+        .dark-mode {
+            background-color: #000000;
+            color: #ecf0f1;
+        }
+
+        .countdown {
+            text-align: center;
+            font-size: 24px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 767px) {
+            .container {
+                padding: 10px;
+            }
+
+            .cover, .closing {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="container">
+        <div class="cover">
+            <h1>The Wedding Of</h1>
+            <h2>Maman And Cantika</h2>
+            <p>Selamat datang di acara pernikahan kami</p>
+        </div>
+
+        <div class="invitation">
+            <p>Salam sejahtera, kami mengundang Anda untuk hadir dalam acara pernikahan kami yang akan diselenggarakan pada:</p>
+            <p><strong>Tanggal:</strong> 15 Februari 2024</p>
+            <p><strong>Waktu:</strong> 18.00 WIB</p>
+            <p><strong>Tempat:</strong> Jl. Pengangsaan</p>
+
+            <div class="countdown" id="countdown"></div>
+        </div>
+
+        <div class="closing">
+            <p>Terima kasih atas doa dan dukungan Anda. Kami sangat berharap untuk bertemu dengan Anda di acara tersebut.</p>
+        </div>
+
+        <button id="darkModeButton">Dark Mode</button>
+    </div>
+
+    <script>
+        function setCountdown() {
+            var eventDate = new Date('2024-02-15T18:00:00').getTime();
+
+            setInterval(function () {
+                var now = new Date().getTime();
+                var timeDiff = eventDate - now;
+
+                var days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+                document.getElementById('countdown').innerHTML = days + ' hari ' + hours + ' jam ' + minutes + ' menit ' + seconds + ' detik';
+            }, 1000);
+        }
+
+        setCountdown();
+
+        function enableDarkMode() {
+            document.body.classList.add('dark-mode');
+        }
+
+        function rememberDarkMode() {
+            var darkModeEnabled = localStorage.getItem('darkModeEnabled');
+            if (darkModeEnabled === 'true') {
+                enableDarkMode();
+            }
+        }
+
+        rememberDarkMode();
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            var darkModeEnabled = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkModeEnabled', darkModeEnabled);
+        }
+
+        document.getElementById('darkModeButton').addEventListener('click', toggleDarkMode);
+    </script>
+
+</body>
+</html>

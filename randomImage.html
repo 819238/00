@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test</title>
+</head>
+<body>
+
+<img id="slideshow" src="" alt="Test">
+
+<script>
+  const imageUrls = [
+    'Bmw.png',
+    'ff.png',
+    'catur.jpeg',
+    'Catur2.png',
+    'catur3.jpg'
+  ];
+
+  function changeImage() {
+    const slideshow = document.getElementById('slideshow');
+    const randomIndex = Math.floor(Math.random() * imageUrls.length);
+    const imageUrl = imageUrls[randomIndex];
+    slideshow.src = imageUrl;
+  }
+
+  window.addEventListener('load', function() {changeImage(); centerImage()});
+
+  function centerImage() {
+    const slideshow = document.getElementById('slideshow');
+    slideshow.style.position = 'absolute';
+    slideshow.style.top = '50%';
+    slideshow.style.left = '50%';
+    slideshow.style.transform = 'translate(-50%, -50%)';
+  }
+</script>
+
+</body>
+</html>
